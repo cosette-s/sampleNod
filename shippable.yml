@@ -13,23 +13,23 @@ env:
     - M1=ONE
 
 build:
-  pre_ci:
-    - docker build -t=shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb .
+  #pre_ci:
+   # - docker build -t=shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb .
 
   pre_ci_boot:
-    image_name: shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb
-    image_tag: latest
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+    image_name: drydock/u12nod
+    image_tag: prod
+    pull: true
+   # options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - ps -eax
     - ls -al
 
-  post_ci:
-    - docker build -t=shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb .
-    - docker push shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb
-
+  #post_ci:
+    #- docker build -t=shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb .
+   # - docker push shippabledocker/shiphitchcock1_sample_node_lighthouse:28feb
+    
 integrations:
   hub:
     - integrationName: ship-docker
