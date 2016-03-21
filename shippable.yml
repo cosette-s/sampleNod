@@ -10,7 +10,7 @@ node_js:
   #- iojs-v3
   #- 5.0
 
-#timeout: 5
+timeout: 10
 
 build:
   ci:
