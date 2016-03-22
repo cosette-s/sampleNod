@@ -19,23 +19,26 @@ env:
 
 build:
   pre_ci:
-    - docker build -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws .
+    - docker build --rm -t=gcr.io/vidya-project/pyt-img:$BRANCH.$BUILD_NUMBER .
+    #- docker build --rm -t=gcr.io/vidya-project/pyt-img:latest.1 .
 
-  pre_ci_boot:
-      image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws
-      image_tag: latest
-      pull: false
-  #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+  
 
   ci:
-    - node --version  
     - ps -eax
-    - ls -al 
+    - ls -al
 
   post_ci:
-    - docker push 480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws
+    
+   # - docker build --rm -t=gcr.io/vidya-project/pyt-img:$BRANCH.$BUILD_NUMBER .
+    
+    - docker push gcr.io/vidya-project/pyt-img:$BRANCH.$BUILD_NUMBER
+
+  smoke_test:
+    - sudo ls /
+
 
 integrations:
   hub:
     - integrationName: ship-gcr
-      type: docker    
+      type: gcr    
