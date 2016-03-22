@@ -19,10 +19,10 @@ env:
 
 build:
   pre_ci:
-    - docker build -t=shippabledocker/shiphitchcock1_testsamplenode .
+    - docker build -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws .
 
   pre_ci_boot:
-      image_name: shippabledocker/shiphitchcock1_testsamplenode
+      image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws
       image_tag: latest
       pull: false
   #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
@@ -33,9 +33,9 @@ build:
     - ls -al 
 
   post_ci:
-    - docker push shippabledocker/shiphitchcock1_testsamplenode
+    - docker push 480971114143.dkr.ecr.us-east-1.amazonaws.com/test-aws
 
 integrations:
   hub:
-    - integrationName: ship-docker
+    - integrationName: ship-gcr
       type: docker    
