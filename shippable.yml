@@ -3,17 +3,19 @@ language: node_js
 # Version number
 node_js:
   - 0.10
-  - 0.12
-  - 4.2.3
-  - iojs-v1
-  - iojs-v2
-  - iojs-v3
+  #- 0.12
+ # - 4.2.3
+  #- iojs-v1
+  #- iojs-v2
+  #- iojs-v3
   - 5.0
 
 
 build:
   ci:
     - node --version
+    - mvn clean cobertura:cobertura
+    - mvn test
     
   pre_ci_boot:
     image_name: drydock/u14nod
