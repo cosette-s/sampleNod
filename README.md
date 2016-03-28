@@ -1,2 +1,2 @@
 # sampleNod
-test sample for NodeJS
+test sample for NodeJS project
