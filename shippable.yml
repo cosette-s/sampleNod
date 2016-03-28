@@ -13,4 +13,3 @@ node_js:
 build:
   ci:
     - node --version 
-  #testing
