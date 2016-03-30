@@ -33,7 +33,7 @@ build:
     - ls -al 
 
   post_ci:
-    - docker push shippabledocker/shiphitchcock1_testsamplenode
+    - docker push shippabledocker/shiphitchcock1_testsamplenode:test
 
 integrations:
   hub:
