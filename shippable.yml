@@ -13,3 +13,5 @@ node_js:
 build:
   ci:
     - node --version 
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecovarage
