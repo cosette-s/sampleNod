@@ -2,16 +2,43 @@ language: node_js
 
 # Version number
 node_js:
-  - 0.10
+  #- 0.10
   - 0.12
-  - 4.2.3
+  #- 4.2.3
   - iojs-v1
-  - iojs-v2
-  - iojs-v3
-  - 5.0
+  #- iojs-v2
+  #- iojs-v3
+  #- 5.0
+
+env:
+  global:
+    - FOO=FUBU   
+
+  matrix:
+    - M1=ONE
 
 build:
+  pre_ci:
+    - docker build -t=shippabledocker/shiphitchcock1_testsamplenode .
+
+  pre_ci_boot:
+      image_name: shippabledocker/shiphitchcock1_testsamplenode
+      image_tag: latest
+      pull: false
+      options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+
   ci:
-    - node --version 
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecovarage
+    - node --version  
+    - ps -eax
+    - ls -al 
+
+  post_ci:
+    - docker push shippabledocker/shiphitchcock1_testsamplenode
+
+integrations:
+  hub:
+    - integrationName: ship-docker
+      type: docker
+      branches:
+        only:
+          - "master"   
