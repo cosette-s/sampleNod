@@ -12,7 +12,7 @@ node_js:
 
 env:
   global:
-    - FOO=FUBU
+    - FOO=FUBU   
 
   matrix:
     - M1=ONE
