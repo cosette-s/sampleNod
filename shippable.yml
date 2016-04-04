@@ -3,7 +3,7 @@ language: node_js
 # Version number
 node_js:
   - 0.10
-  - 0.12
+  - 0.12  
   - 0.11
 
 build:
@@ -27,4 +27,3 @@ services:
   - redis
   - memcache
   
- 
