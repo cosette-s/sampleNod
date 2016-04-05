@@ -18,7 +18,7 @@ env:
     - M1=ONE
     
 "globalEnv": {
-  "POST": "/projects/56fb63f6c77dae78a8fcc431/newBuild"
+  "POST": "/projects/56fb63f6c77dae78a8fcc431/newBuild",
   "FOO": "bar",
   "FIZZ": "buzz"
 }
