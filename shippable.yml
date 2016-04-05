@@ -16,6 +16,11 @@ env:
 
   matrix:
     - M1=ONE
+    
+"globalEnv": {
+  "FOO": "bar",
+  "FIZZ": "buzz"
+}
 
 build:
   pre_ci:
