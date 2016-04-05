@@ -5,7 +5,7 @@ node_js:
   #- 0.10
   - 0.12
   #- 4.2.3
-  - iojs-v1
+  #- iojs-v1
   #- iojs-v2
   #- iojs-v3
   #- 5.0
@@ -18,14 +18,14 @@ env:
     - M1=ONE
 
 build:
-  #pre_ci:
-   # - docker build -t=shippabledocker/shiphitchcock1_testsamplenode .
+  pre_ci:
+    - docker build -t=shippabledocker/shiphitchcock1_testsamplenode .
 
   pre_ci_boot:
-      #image_name: shippabledocker/shiphitchcock1_testsamplenode
-      #image_tag: latest
-      image_name: drydock/u12nod
-      image_tag: prod
+      image_name: shippabledocker/shiphitchcock1_testsamplenode
+      image_tag: latest
+      #image_name: drydock/u12nod
+      #image_tag: prod
       pull: false
       options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
@@ -34,8 +34,8 @@ build:
     - ps -eax
     - ls -al 
 
-  #post_ci:
-  #  - docker push shippabledocker/shiphitchcock1_testsamplenode
+  post_ci:
+    - docker push shippabledocker/shiphitchcock1_testsamplenode
 
 integrations:
   hub:
