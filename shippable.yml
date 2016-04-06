@@ -33,7 +33,7 @@ build:
     - node --version  
     - ps -eax
     - ls -al 
-   # - sleep 6m
+    - sleep 30m
 
   post_ci:
     - docker push shippabledocker/shiphitchcock1_testsamplenode2
