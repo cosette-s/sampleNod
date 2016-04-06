@@ -30,7 +30,7 @@ build:
   ci:
     - node --version  
     - ps -eax   
-    - ls -al 
+    - ls -al   
 
   post_ci:
     - docker build -t=shippabledocker/pipeline:$BRANCH.$BUILD_NUMBER .
@@ -39,4 +39,4 @@ build:
 integrations:
   hub:
     - integrationName: ship-docker
-      type: docker  
+      type: docker   
