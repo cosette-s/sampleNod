@@ -1,17 +1,50 @@
+# Language setting
 language: node_js
 
 # Version number
 node_js:
-  - 0.10
-#  - 0.12
- # - 4.2.3
-  #- iojs-v1
-  #- iojs-v2
-  #- iojs-v3
-  #- 5.0
+  - 4.2.1
+  - 0.10.25
+  - 0.12
+  - 0.11
 
-timeout: 5
+env:
+  global:
+    - XUNIT_FILE=shippable/testresults/xunit.xml MongoConnectionStringTests=mongodb://127.0.0.1:27017/test MemcachedLocationTest=localhost:11211 LogLevel=error BraintreeEnvironment=Sandbox
+    - secure: GVfbYWQ6H65vvkehkZLnfwKrFpmFBumlseB1/ZeiCbUjTk2oWrxrw81ZFF0c2G6D0WShLvyK+I9b5OyO32Ln8c34fOD93Vo/DXEtWa74mGezTCuO3hCO2MwDbRldji03qcK/5E4yqwcz5IGIFU6m0Pa5ydvy1vvvQHwfGGEL5A7xF7TQSCw2IcmMVWT+ddBtTUssTr+2RJgpDpiaKbEIFfA14wFI8wl2geIObeHoOZlNBo405v4n/Sw8JLMQWOtkzY9cIKgIIJkbp1upZDvZvf1mnpLpi/vpIIE4eNmdktp3yBgJY9/tKITXzp8sRxGRc3ZdoWwhj2mzhypbK8P7T3Ac7O9hpXwXYmhSxXOj1voK6flJ/YUby2nT+nqtBEgNPmsbVLe7Wsugw/eXxiPpBL4Bmdmp3DbdcL2RMzFkmnEv45UjRIWs+FWRC2rPrwewALln8z0IOVcuryAuEqS0Itek6g4gvDZ5hgyjPo5A6IinqTwJhWHStzkUGqN0DHyOwRSK1yHl7qpAsIKZtMCxw9LMHmeS+6XsDHPmJF8FfC6UyL+OR8R5EDcKM6aMFETz6C7FoRc6AUA5CZ3pyu+zYlshDBUofzj4BMIfIP35OjPM8dvKwKR75N39AwyaInc8I+J8YvL1Qqm0opE1p79qrsrfGo22V1o4//D15VpsjSE=
+
+services:
+  - mongodb
+  - memcached
 
 build:
+  pre_ci_boot:
+    image_name: drydock/u14nodall
+    image_tag: prod
+    pull: true
+    options: '--privileged=true --net=bridge'
+
   ci:
+    - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+    - shippable_retry npm install
     - node --version
+    - sudo npm install -g istanbul
+    - sudo mongo --eval 'db.collection.find()'
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - npm run-script ci
+
+  on_success:
+    - mongo test --eval "db.dropDatabase()"
+    - istanbul report cobertura --dir shippable/codecoverage/
+    - cat shippable/codecoverage/cobertura-coverage.xml
+
+  on_failure:
+    - mongo test --eval "db.dropDatabase()"
+    - istanbul report cobertura --dir shippable/codecoverage/
+    - cat shippable/codecoverage/cobertura-coverage.xml
+
+  cache: true
+
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/node_modules
