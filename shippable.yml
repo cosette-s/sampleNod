@@ -18,13 +18,13 @@ env:
     - M1=ONE
 
 build:
-  pre_ci:
-    - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_node12 .
+  #pre_ci:
+   # - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_node12 .
 
   pre_ci_boot:
-    image_name: quay.io/shippablequay/shiphitchcock1_sample_node12
-    image_tag: latest
-    pull: false
+    image_name: drydock/u14nod
+    image_tag: prod
+    pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
@@ -33,8 +33,8 @@ build:
    # - ls -al 
 
   post_ci:
-    #- docker build -t=quay.io/shippablequay/shiphitchcock1_sample_nod .
-    - docker push quay.io/shippablequay/shiphitchcock1_sample_node12
+    - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_nod12 .
+    - docker push quay.io/shippablequay/shiphitchcock1_sample_nod12
 
 integrations:
   hub:
