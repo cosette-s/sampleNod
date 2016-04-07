@@ -22,9 +22,9 @@ build:
     - docker build -t=quay.io/shippablequay/shiphitchcock1_sample_node12 .
 
   pre_ci_boot:
-    image_name: quay.io/shippablequay/shiphitchcock1_sample_node12 .
+    image_name: quay.io/shippablequay/shiphitchcock1_sample_node12
     image_tag: latest
-    pull: true
+    pull: false
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
