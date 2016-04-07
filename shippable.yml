@@ -2,12 +2,12 @@ language: node_js
 
 # Version number
 node_js:
-  - 0.10
-  - 0.12
-  - 4.2.3
-  - iojs-v1
-  - iojs-v2
-  - iojs-v3
+  #- 0.10
+  #- 0.12
+  #- 4.2.3
+  #- iojs-v1
+  #- iojs-v2
+  #- iojs-v3
   - 5.0
 
 env:
@@ -33,8 +33,8 @@ build:
    # - ls -al 
 
   post_ci:
-    - docker build -t=shippabledocker/shiphitchcock1_sample_nod7apr .
-    - docker push shippabledocker/shiphitchcock1_sample_nod7apr
+    - docker build -t=shippabledocker/shiphitchcock1_sample_nod7apr2 .
+    - docker push shippabledocker/shiphitchcock1_sample_nod7apr2
 
 integrations:
   hub:
