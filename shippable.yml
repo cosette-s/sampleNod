@@ -44,8 +44,8 @@ build:
     - ls -al 
     - sleep 10m
 
-  post_ci:
-    - docker push shippabledocker/shiphitchcock1_testsamplenode2
+  #post_ci:
+  #  - docker push shippabledocker/shiphitchcock1_testsamplenode2
     
 integrations:
   hub:
