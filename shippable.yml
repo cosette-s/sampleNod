@@ -14,11 +14,20 @@ node_js:
 
 env:
   global:
-    - FOO=FUBU
+    - FOO=Bar
+    - BAR=Foo
 
   matrix:
     - M1=ONE  
 
+#in orderfail for 4.2.3 version
+#matrix:
+ # include:
+   # - node_js: 4.2.3
+  #    env: tt@!=rr
+  #allow_failures:
+   # - node_js: 4.2.3
+   
 build:
   pre_ci:
     - docker build -t=shippabledocker/shiphitchcock1_testsamplenode2 .
@@ -33,12 +42,52 @@ build:
     - node --version  
     - ps -eax
     - ls -al 
-    - sleep 62m
+    - sleep 10m
 
   post_ci:
     - docker push shippabledocker/shiphitchcock1_testsamplenode2
-
+    
 integrations:
   hub:
     - integrationName: ship-docker
-      type: docker    
+      type: docker
+  notifications:
+    - integrationName: email
+      type: email
+      recipients: 
+        - shiphitchcock1@gmail.com
+        - varsha@shippable.com
+      on_start: always
+      on_success: always
+      on_failure: always
+      on_pull_request: always
+      
+    - integrationName: ship-slack
+      type: slack
+      recipients:
+        - "#hitchcock1-public"
+        - pvt-channel
+      on_start: always
+      on_success: always
+      on_failure: always
+      on_pull_request: always
+      
+    - integrationName: irc
+      type: irc
+      recipients:
+        - "chat.freenode.net#test-cock1"
+      on_start: always
+      on_success: always
+      on_failure: always
+      on_pull_request: always
+      
+    - integrationName: ship-hipchat
+      type: hipchat
+      recipients:
+        - '#hitchcock1'
+        - '#hitchcock1pvt'
+        - '@shiphitchcock1'
+      on_start: always
+      on_success: always
+      on_failure: always
+      on_pull_request: always
