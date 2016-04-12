@@ -21,10 +21,10 @@ env:
     - M1=ONE  
 
 #in orderfail for 4.2.3 version
-#matrix:
- # include:
-   # - node_js: 4.2.3
-  #    env: tt@!=rr
+matrix:
+  include:
+    - node_js: 4.2.3
+      env: tt@!=rr
   #allow_failures:
    # - node_js: 4.2.3
    
