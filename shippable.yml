@@ -33,9 +33,9 @@ build:
   #  - docker build -t=shippabledocker/shiphitchcock1_testsamplenode2 .
 
   pre_ci_boot:
-      image_name: drydock/u12nod#shippabledocker/shiphitchcock1_testsamplenode2
-      image_tag: prod#latest
-      pull: false
+      image_name: drydock/u12nod
+      image_tag: prod
+      pull: true
   #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
