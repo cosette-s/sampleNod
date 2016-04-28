@@ -31,7 +31,7 @@ build:
     - node --version  
     - ps -eax   
     - ls -al 
-    - sleep 9m
+   # - sleep 9m
 
   post_ci:
     - docker build -t=shippabledocker/pipeline:$BRANCH.$BUILD_NUMBER .
