@@ -23,8 +23,8 @@ build:
   #  - docker build -t=shippabledocker/pipeline .
 
   pre_ci_boot:
-    image_name: shippabledocker/pipeline
-    image_tag: latest
+    image_name: drydock/u14nodall
+    image_tag: prod
     pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
