@@ -31,7 +31,7 @@ build:
   ci:
     - node --version  
     - ps -eax   
-    - ls -al 
+    - ls -al   
    # - sleep 9m
 
   post_ci:
