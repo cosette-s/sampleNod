@@ -19,10 +19,10 @@ env:
 
 build:
   pre_ci:
-    - docker build -t=shiphitchcock1/sample_node .
+    - docker build -t=shiphitchcock1/sampleNod .
 
   pre_ci_boot:  
-      image_name: shiphitchcock1/sample_node
+      image_name: shiphitchcock1/sampleNod
       image_tag: latest
       #image_name: drydock/u12nod
       #image_tag: prod
@@ -35,7 +35,7 @@ build:
     - ls -al 
 
   post_ci:
-    - docker push shiphitchcock1/sample_node
+    - docker push shiphitchcock1/sampleNod
 
 integrations:
   hub:
