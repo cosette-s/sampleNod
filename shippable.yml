@@ -33,6 +33,8 @@ build:
     - node --version  
     - ps -eax
     - ls -al 
+    - echo "$FOO"
+    - echo "$BOO"
 
   post_ci:
     - docker push shiphitchcock1/samplenod
