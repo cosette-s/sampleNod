@@ -45,4 +45,12 @@ integrations:
       type: docker
       branches:
         only:
-          - master     
+          - master 
+          
+    - integrationName: cock1gitlab-sampleJav
+      type: webhook
+      payload:
+        - API_URL=$SHIPPABLE_API_URL
+        - CONTAINER_NAME=$SHIPPABLE_CONTAINER_NAME
+        - FOO=FIZZ
+        - BOO=BUZZ
