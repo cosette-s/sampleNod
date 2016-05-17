@@ -18,15 +18,15 @@ env:
     - M1=ONE
 
 build:
-  pre_ci:
-    - docker build -t=shiphitchcock1/samplenod .
+ # pre_ci:
+   # - docker build -t=shiphitchcock1/samplenod .
 
   pre_ci_boot:  
-      image_name: shiphitchcock1/samplenod
-      image_tag: latest
+      image_name: drydock/u12nod
+      image_tag: prod
       #image_name: drydock/u12nod
       #image_tag: prod
-      pull: false
+      pull: true
       options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
@@ -37,7 +37,8 @@ build:
     - echo "$BOO"
 
   post_ci:
-    - docker push shiphitchcock1/samplenod
+    - docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
+    - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
 
 integrations:
   hub:
