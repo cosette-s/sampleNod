@@ -34,7 +34,7 @@ build:
     - ps -eax
     - ls -al 
     - echo "$FOO"
-    - echo "$BOO"
+    - echo "$BOO"  
   
   post_ci:
     - docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
