@@ -11,13 +11,13 @@ node_js:
   - 5.0
 
 build:
-  #pre_ci:
- #   - docker build -t=shippabledocker/shiphitchcock1_sample_nod .
+  pre_ci:
+    - docker pull -t=shippabledocker/hitchcock4_sample_node21 .
 
-  pre_ci_boot:
-    image_name: shippabledocker/hitchcock4_sample_node21
-    image_tag: latest
-    pull: true
+ # pre_ci_boot:
+  #  image_name: shippabledocker/hitchcock4_sample_node21
+   # image_tag: latest
+    #pull: true
    # options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
