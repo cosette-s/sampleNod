@@ -12,19 +12,22 @@ node_js:
 
 build:
   pre_ci:
-    - docker pull shiphitchcock1/betaci_nod_privateimg_pl:privateimage.51
+    - docker build -t=shiphitchcock1/betaci_nod_privateimg_pl:privateimage.52
+    - docker pull shiphitchcock1/betaci_nod_privateimg_pl:privateimage.52
 
- # pre_ci_boot:
-  #  image_name: "shiphitchcock1/betaci_nod_privateimg_pl"
-   # image_tag: "privateimage.51"
-    #pull: true
-   # options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+  pre_ci_boot:
+    image_name: "shiphitchcock1/betaci_nod_privateimg_pl"
+    image_tag: "privateimage.52"
+    pull: true
+    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - node --version  
    # - ps -eax
    # - ls -al 
-
+  post_ci:
+    #- docker build -t=480971114143.dkr.ecr.us-east-1.am-t=azonaws.com/vidya1-repo1 .
+    - docker push shiphitchcock1/betaci_nod_privateimg_pl:privateimage.52
 
 integrations:
   hub:
