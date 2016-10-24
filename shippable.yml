@@ -12,7 +12,7 @@ node_js:
 
 build:
   pre_ci:
-    - docker pull -t=shippabledocker/hitchcock4_sample_node21 .
+    - docker pull shippabledocker/hitchcock4_sample_node21
 
  # pre_ci_boot:
   #  image_name: shippabledocker/hitchcock4_sample_node21
