@@ -15,8 +15,8 @@ build:
  #   - docker build -t=shippabledocker/hitchcock4_sample_node21 .
 
   pre_ci_boot:
-    image_name: shiphitchcock1/betaci_nod_privateimg_pl
-    image_tag: privateimage.51
+    image_name: "shiphitchcock1/betaci_nod_privateimg_pl"
+    image_tag: "privateimage.51"
     pull: true
    # options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
@@ -28,6 +28,6 @@ build:
 
 integrations:
   hub:
-    - integrationName: cock1-docker
+    - integrationName: "cock1-docker"
       type: docker
   
