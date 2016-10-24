@@ -28,6 +28,6 @@ build:
 
 integrations:
   hub:
-    - integrationName: plv2-docker
+    - integrationName: cock1-docker
       type: docker
   
