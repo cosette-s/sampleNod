@@ -10,34 +10,24 @@ node_js:
   #- iojs-v3
   - 5.0
 
-env:
-  global:
-    - FOO=FUBU
-
-  matrix:
-    - M1=ONE
-
 build:
   #pre_ci:
  #   - docker build -t=shippabledocker/shiphitchcock1_sample_nod .
 
   pre_ci_boot:
-    image_name: shippabledocker/shiphitchcock1_sample_nod
+    image_name: shippabledocker/hitchcock4_sample_node21
     image_tag: latest
     pull: true
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+   # options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - node --version  
    # - ps -eax
    # - ls -al 
 
-  post_ci:
-    - docker build -t=shippabledocker/shiphitchcock1_sample_nod7apr2 .
-    - docker push shippabledocker/shiphitchcock1_sample_nod7apr2
 
 integrations:
   hub:
-    - integrationName: ship-docker
+    - integrationName: plv2-docker
       type: docker
   
