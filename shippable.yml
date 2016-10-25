@@ -1,5 +1,17 @@
 language: node_js
 
+services:
+  - mysql
+  #- postgres
+  - redis
+  - memcache
+  - elasticsearch
+  - mongodb
+  - rabbitmq
+  - neo4j
+  - couchdb
+  - rethinkdb
+
 # Version number
 node_js:
   #- 0.10
@@ -21,13 +33,13 @@ build:
  # pre_ci:
    # - docker build -t=shiphitchcock1/samplenod .
 
-  pre_ci_boot:  
-      image_name: drydock/u12nod
-      image_tag: prod
+  #pre_ci_boot:  
+   #   image_name: drydock/u12nod
+    #  image_tag: prod
       #image_name: drydock/u12nod
       #image_tag: prod
-      pull: true
-      options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+    #  pull: true
+    #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - node --version  
@@ -36,9 +48,9 @@ build:
     - echo "$FOO"
     - echo "$BOO"  
   
-  post_ci:
-    - docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
-    - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
+ # post_ci:
+    #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
+   # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
 
 integrations:
   hub:
