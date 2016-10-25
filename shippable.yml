@@ -1,62 +1,32 @@
-language: node_js
+language: go
 
-services:
-  - mysql
-  #- postgres
-  - redis
-  - memcache
-  - elasticsearch
-  - mongodb
-  - rabbitmq
-  - neo4j
-  - couchdb
-  - rethinkdb
+go:
+ - 1.2
+ - 1.3
+ - 1.4
 
-# Version number
-node_js:
-  #- 0.10
-  - 0.12
-  #- 4.2.3
-  #- iojs-v1
-  #- iojs-v2
-  #- iojs-v3
-  #- 5.0
-
+# environment variable
 env:
-  global:
-    - FOO=FUBU   
+ - FOO=foo BAR=bar
+ - FOO=bar BAR=foo
+# - CI_REPORT=shippable/testresults/junit.xml
 
-  matrix:
-    - M1=ONE 
+before_install:
+ - shippable_retry 'if [ $i -eq 3 ]; then echo "done"; else foobar$i; fi'
+ - export GOPATH=$SHIPPABLE_GOPATH
+ - source $HOME/.gvm/scripts/gvm
+ - gvm install go$SHIPPABLE_GO_VERSION
+ - gvm use go$SHIPPABLE_GO_VERSION
+ - go get github.com/t-yuki/gocover-cobertura
+ - go get github.com/onsi/gomega
+ - go get github.com/onsi/ginkgo
+ - go get code.google.com/p/go.tools/cmd/cover
 
-build:
- # pre_ci:
-   # - docker build -t=shiphitchcock1/samplenod .
-
-  #pre_ci_boot:  
-   #   image_name: drydock/u12nod
-    #  image_tag: prod
-      #image_name: drydock/u12nod
-      #image_tag: prod
-    #  pull: true
-    #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
-  ci:
-    - node --version  
-    - ps -eax
-    - ls -al 
-    - echo "$FOO"
-    - echo "$BOO"   
-       
- # post_ci:
-    #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
-   # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
-
-#integrations:
- # hub:
-   # - integrationName: shiphitchcock1-hub
-   #   type: docker 
-    #  branches:
-    #    only:
-       #   - master 
-          
+# Make folders for the reports
+before_script:
+ - mkdir -p shippable/testresults
+ - mkdir -p shippable/codecoverage
+ 
+script:
+ - go test -coverprofile=coverage.txt -covermode count ./
+ - $GOPATH/bin/gocover-cobertura < coverage.txt > shippable/codecoverage/coverage.xml
