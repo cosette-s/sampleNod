@@ -26,4 +26,4 @@ build:
   pre_ci_boot:
     image_name: drydock/u12nodpls
     image_tag: prod
-    pull: true    
+    pull: true     
