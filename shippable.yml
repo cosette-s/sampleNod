@@ -52,11 +52,11 @@ build:
     #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
    # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
 
-integrations:
-  hub:
-    - integrationName: shiphitchcock1-hub
-      type: docker 
-      branches:
-        only:
-          - master 
+#integrations:
+ # hub:
+   # - integrationName: shiphitchcock1-hub
+   #   type: docker 
+    #  branches:
+    #    only:
+       #   - master 
           
