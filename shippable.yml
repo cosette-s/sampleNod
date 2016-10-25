@@ -47,7 +47,7 @@ build:
     - ls -al 
     - echo "$FOO"
     - echo "$BOO"  
-   
+       
  # post_ci:
     #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
    # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
