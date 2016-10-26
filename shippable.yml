@@ -1,7 +1,8 @@
 language: node_js
+
 services:
   - mysql
-  - postgres
+  #- postgres
   - redis
   - memcache
   - elasticsearch
@@ -10,7 +11,7 @@ services:
   - neo4j
   - couchdb
   - rethinkdb
-  
+    
 # Version number
 node_js:
   - 0.10
@@ -21,9 +22,15 @@ node_js:
   - iojs-v3
   - 5.0
 
+env:
+  - SAAS=shippable
+  - SERVER=qhode
+  
 build:
   ci:
     - node --version
+    - echo "$SAAS"
+    - echo "$SERVER"
     
   pre_ci_boot:
     image_name: drydock/u14nodall
