@@ -25,6 +25,9 @@ node_js:
 env:
   - SAAS=shippable
   - SERVER=qhode
+  - TEST=rc
+  - DEV=alpha
+  - PM=app
   
 build:
   ci:
