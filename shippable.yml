@@ -1,16 +1,16 @@
 language: node_js
 
-services:
-  - mysql
+#services:
+#  - mysql
   #- postgres
-  - redis
-  - memcache
-  - elasticsearch
-  - mongodb
-  - rabbitmq
-  - neo4j
-  - couchdb
-  - rethinkdb
+#  - redis
+#  - memcache
+#  - elasticsearch
+ # - mongodb
+ # - rabbitmq
+ # - neo4j
+ # - couchdb
+ # - rethinkdb
 
 # Version number
 node_js:
@@ -46,7 +46,8 @@ build:
     - ps -eax
     - ls -al 
     - echo "$FOO"
-    - echo "$BOO"   
+    - echo "$BOO" 
+    - echo "$M1"
        
  # post_ci:
     #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
