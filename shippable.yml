@@ -30,8 +30,8 @@ env:
     - M1=ONE 
 
 build:
- # pre_ci:
-   # - docker build -t=shiphitchcock1/samplenod .
+  pre_ci:
+    - docker build -t=shiphitchcock1/samplenod .
 
   #pre_ci_boot:  
    #   image_name: drydock/u12nod
@@ -49,14 +49,14 @@ build:
     - echo "$BOO" 
     - echo "$M1"
        
- # post_ci:
+  post_ci:
     #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
-   # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
+    - docker push shiphitchcock1/samplenod:latest
 
-#integrations:
- # hub:
-   # - integrationName: shiphitchcock1-hub
-   #   type: docker 
+integrations:
+  hub:
+    - integrationName: shiphitchcock1-hub
+      type: docker 
     #  branches:
     #    only:
        #   - master 
