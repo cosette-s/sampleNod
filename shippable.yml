@@ -61,5 +61,5 @@ integrations:
       type: docker 
     #  branches:
     #    only:
-       #   - master 
+       #   - master  
           
