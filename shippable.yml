@@ -57,7 +57,7 @@ build:
   
 integrations:
   hub:
-    - integrationName: shiphitchcock1-hub
+    - integrationName: ship-docker
       type: docker 
     #  branches:
     #    only:
