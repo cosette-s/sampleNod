@@ -51,7 +51,6 @@ build:
    # - ehho "Hello"
        
  # post_ci:
-    #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
    # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
 
 #integrations:
