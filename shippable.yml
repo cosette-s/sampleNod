@@ -48,7 +48,6 @@ build:
     - echo "$FOO"
     - echo "$BOO" 
     - echo "$M1"
-    - ehho
        
  # post_ci:
     #- docker build -t=shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER .
