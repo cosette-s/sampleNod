@@ -14,13 +14,7 @@ language: node_js
 
 # Version number
 node_js:
- # - 0.10
- # - 0.12
   - 4.2.3
- # - iojs-v1
-  #- iojs-v2
-  #- iojs-v3
-  #- 5.0
 
 env:
   global:
@@ -36,8 +30,6 @@ build:
   #pre_ci_boot:  
    #   image_name: drydock/u12nod
     #  image_tag: prod
-      #image_name: drydock/u12nod
-      #image_tag: prod
     #  pull: true
     #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
@@ -45,10 +37,6 @@ build:
     - node --version  
     - ps -eax
     - ls -al 
-    - echo "$FOO"
-    - echo "$BOO" 
-    - echo "$M1"
-    - echo "Hello"
     - lsb_release -a
     - docker --version
     - docker info
@@ -63,5 +51,4 @@ build:
    #   type: docker 
     #  branches:
     #    only:
-       #   - master 
-          
+       #   - master           
