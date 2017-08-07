@@ -48,7 +48,11 @@ build:
     - echo "$FOO"
     - echo "$BOO" 
     - echo "$M1"
-    - ehho "Hello"
+    - echo "Hello"
+    - lsb_release -a
+    - docker --version
+    - docker info
+    - docker ps
        
  # post_ci:
    # - docker push shiphitchcock1/samplenod:$BRANCH.$BUILD_NUMBER 
