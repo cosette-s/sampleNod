@@ -33,10 +33,14 @@ build:
    # - ls -al 
 
   post_ci:
-    - docker build -t=quay.io/revathird/docker:officialimgtag .
-    - docker push quay.io/revathird/docker:officialimgtag
+    - docker build -t=shippabledocker/sample_node_pvt:officialimgtag .
+    - docker build -t=shippabledocker/sample_node:officialimgtag .
+    - docker push shippabledocker/sample_node_pvt:latest.40
+    - docker push shippabledocker/sample-node:latest
+    - docker push shippabledocker/sample_node:officialimgtag
+    - docker push shippabledocker/sample_node_pvt:officialimgtag
 
 integrations:
   hub:
-    - integrationName: ship-quay
-      type: quay.io
+    - integrationName: docker
+      type: docker
