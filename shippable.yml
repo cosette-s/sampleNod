@@ -35,6 +35,8 @@ build:
   post_ci:
     - docker build -t=quay.io/revathird/docker:officialimgtag .
     - docker push quay.io/revathird/docker:officialimgtag
+    - docker build -t=quay.io/revathird/test-repo:officialimgtag .
+    - docker push quay.io/revathird/test-repo:officialimgtag
 
 integrations:
   hub:
