@@ -1,4 +1,4 @@
-FROM drydock/u14nod:prod
+FROM drydock/u16nodall:master
 
 RUN mkdir -p /tmp/logs
 
