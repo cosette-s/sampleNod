@@ -33,8 +33,11 @@ build:
    # - ls -al 
 
   post_ci:
+    - docker build -t=shippabledocker/sample_node_pvt:latest.40 .
+    - docker build -t=shippabledocker/sample-node:latest .
     - docker build -t=shippabledocker/sample_node_pvt:officialimgtag .
     - docker build -t=shippabledocker/sample_node:officialimgtag .
+    
     - docker push shippabledocker/sample_node_pvt:latest.40
     - docker push shippabledocker/sample-node:latest
     - docker push shippabledocker/sample_node:officialimgtag
