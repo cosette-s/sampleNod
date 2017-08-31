@@ -1,43 +1,14 @@
 language: node_js
 
-#services:
-#  - mysql
-  #- postgres
-#  - redis
-#  - memcache
-#  - elasticsearch
- # - mongodb
- # - rabbitmq
- # - neo4j
- # - couchdb
- # - rethinkdb
-
 # Version number
 node_js:
   - 4.2.3
 
-env:
-  global:
-    - FOO=FUBU   
-
-  matrix:
-    - M1=ONE 
-
 build:
- # pre_ci:
-   # - docker build -t=shiphitchcock1/samplenod .
-
-  #pre_ci_boot:  
-   #   image_name: drydock/u12nod
-    #  image_tag: prod
-    #  pull: true
-    #  options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - node --version  
-    - ps -eax
-    - ls -al 
-    - lsb_release -a
+   # - lsb_release -a
     - docker --version
     - docker info
     - docker ps
